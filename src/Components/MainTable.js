@@ -78,7 +78,7 @@ function MainTable() {
 	useEffect(() => {
 		let tempData = sampledata.filter((item, index) => {
 			if (index >= page * 5 && index < page * 5 + 5) {
-				// item.index = index;
+				item.color = index;
 				return item;
 			}
 		});
@@ -95,7 +95,7 @@ function MainTable() {
 				/>
 				<div className=''>
 					{currentData.map((item) => {
-						return <SingleElement data={item} />;
+						return <SingleElement data={item} sampledata={sampledata} setSampleData = {setSampleData} />;
 					})}
 				</div>
 			</div>

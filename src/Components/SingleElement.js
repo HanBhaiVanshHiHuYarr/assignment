@@ -1,9 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import ProfilePic from "../Assets/profile.svg";
+import Modal from "./Modal";
+import YesNo from "./YesNo";
 
-function SingleElement({ data }) {
-	// console.log(data.id)
-	if (data.index % 2 == 0) {
+function SingleElement({ data, setSampleData, sampledata }) {
+	const handleDelete = (index) => {
+		let final = [];
+		final = sampledata.filter((item) => item.index != data.index);
+		console.log(final);
+		setSampleData(final);
+	};
+
+	const handleEdit = () => {
+		setVisible(true);
+	};
+
+	const [visible, setVisible] = useState(false);
+
+	if (data.color % 2 == 0) {
 		return (
 			<div className=' h-20 flex bg-slate-100 p-3 items-center'>
 				<img
@@ -39,8 +53,21 @@ function SingleElement({ data }) {
 						</h1>
 					</div>
 					<div className=' flex w-1/4 flex items-center justify-center'>
-						<button class='fa-solid text-neutral-500 fa-trash-can m-3'></button>
-						<button class='fa-solid text-neutral-500 fa-pencil m-3'></button>
+						<button
+							class='fa-solid text-neutral-500 fa-trash-can m-3'
+							onClick={handleDelete}></button>
+						<button
+							class='fa-solid text-neutral-500 fa-pencil m-3'
+							onClick={handleEdit}></button>
+						{visible && (
+							<Modal
+								setVisible={setVisible}
+								setSampleData={setSampleData}
+								prevData={data}
+								modify={true}
+								sampledata = {sampledata}
+							/>
+						)}
 					</div>
 				</div>
 			</div>
@@ -81,8 +108,23 @@ function SingleElement({ data }) {
 						</h1>
 					</div>
 					<div className=' flex w-1/4 flex items-center justify-center'>
-						<button class='fa-solid text-neutral-500 fa-trash-can m-3'></button>
-						<button class='fa-solid text-neutral-500 fa-pencil m-3'></button>
+						<button
+							class='fa-solid text-neutral-500 fa-trash-can m-3'
+							onClick={handleDelete}>
+							{/* <YesNo /> */}
+						</button>
+						<button
+							class='fa-solid text-neutral-500 fa-pencil m-3'
+							onClick={handleEdit}></button>
+						{visible && (
+							<Modal
+								setVisible={setVisible}
+								setSampleData={setSampleData}
+								sampledata={sampledata}
+								prevData={data}
+								modify={true}
+							/>
+						)}
 					</div>
 				</div>
 			</div>

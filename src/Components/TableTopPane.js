@@ -7,13 +7,23 @@ function TableTopPane({ setSampleData, lastIndex }) {
 		setVisible(true);
 	};
 
+	const data = {
+		name: "",
+		email: "",
+		lastLogin: "",
+		name: "",
+		role: "",
+		status:""
+	}
+
 	return (
 		<div className='flex p-5 items-center'>
 			{visible && (
 				<Modal
 					setSampleData={setSampleData}
-					lastIndex = {lastIndex}
+					lastIndex={lastIndex}
 					setVisible={setVisible}
+					prevData={data}
 				/>
 			)}
 			<div>
