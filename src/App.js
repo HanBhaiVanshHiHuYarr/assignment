@@ -1,25 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
+import BottomPane from "./Components/BottomPane";
+import TopPane from "./Components/TopPane";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	return (
+		<div className='w-screen bg-slate-50 h-full flex flex-col'>
+			<h1 className='p-4 py-2 font-semibold text-3xl text-neutral-800'>
+				{" "}
+				Company Settings
+			</h1>
+			<TopPane />
+			<BottomPane />
+		</div>
+	);
 }
 
 export default App;
