@@ -1,7 +1,18 @@
 import React from "react";
+  import { ToastContainer, toast } from "react-toastify";
 
 function TableBottomPane({ page, setPage, maxPage }) {
-	console.log(page, maxPage);
+	const errorToast = (error) =>
+		toast.info(error, {
+			position: "bottom-right",
+			autoClose: 1000,
+			hideProgressBar: false,
+			closeOnClick: true,
+			draggable: true,
+			progress: undefined,
+			theme: "light",
+		});
+
 	const pageNumbers = [];
 	for (let i = 0; i <= maxPage; i++) {
 		pageNumbers.push(i + 1);
@@ -9,14 +20,16 @@ function TableBottomPane({ page, setPage, maxPage }) {
 	console.log(pageNumbers);
 	const previousHandeler = () => {
 		if (page == 0) {
-			alert("This is the first page");
+			errorToast("This is the first page")
+			// alert("This is the first page");
 		} else {
 			setPage(page - 1);
 		}
 	};
 	const nextHandler = () => {
 		if (page == maxPage) {
-			alert("This is the last page");
+			// alert("This is the last page");
+			errorToast("This is the last page");
 		} else {
 			setPage(page + 1);
 		}
@@ -26,6 +39,7 @@ function TableBottomPane({ page, setPage, maxPage }) {
 	};
 	return (
 		<div className='flex items-center justify-between p-5'>
+			
 			<button
 				onClick={previousHandeler}
 				className='outline outline-2 outline-neutral-300 hover:bg-neutral-50 shadow-md rounded-md px-4 py-2 text-neutral-600 font-bold'>
@@ -52,6 +66,7 @@ function TableBottomPane({ page, setPage, maxPage }) {
 								}}
 								className='outline mx-2 outline-2 outline-neutral-300 hover:bg-neutral-100 shadow-md rounded-md px-4 py-2 text-neutral-600 font-bold'>
 								{pageNumber}
+								<ToastContainer />
 							</button>
 						);
 					}
