@@ -91,6 +91,7 @@ function MainTable() {
 			<div>
 				<TableTopPane
 					setSampleData={setSampleData}
+					sampledata = {sampledata}
 					lastIndex={sampledata[sampledata.length - 1].index}
 				/>
 				<div className=''>

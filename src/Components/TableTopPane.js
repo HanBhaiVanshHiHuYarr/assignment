@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Modal from "./Modal";
 
-function TableTopPane({ setSampleData, lastIndex }) {
+function TableTopPane({ setSampleData, lastIndex , sampledata}) {
 	const [visible, setVisible] = useState(false);
 	const handleAdd = () => {
 		setVisible(true);
@@ -15,6 +15,17 @@ function TableTopPane({ setSampleData, lastIndex }) {
 		role: "",
 		status:""
 	}
+
+	const exportData = () => {
+		const jsonString = `data:text/json;chatset=utf-8,${encodeURIComponent(
+			JSON.stringify(sampledata)
+		)}`;
+		const link = document.createElement("a");
+		link.href = jsonString;
+		link.download = "data.json";
+
+		link.click();
+	};
 
 	return (
 		<div className='flex p-5 items-center'>
@@ -39,7 +50,9 @@ function TableTopPane({ setSampleData, lastIndex }) {
 				</h1>
 			</div>
 			<div className=' grow flex justify-end'>
-				<button className='outline outline-2 outline-neutral-300 hover:bg-neutral-50 shadow-md rounded-md px-4 py-2 text-neutral-600 font-bold'>
+				<button
+					onClick={exportData}
+					className='outline outline-2 outline-neutral-300 hover:bg-neutral-50 shadow-md rounded-md px-4 py-2 text-neutral-600 font-bold'>
 					Download CSV
 				</button>
 				<button
