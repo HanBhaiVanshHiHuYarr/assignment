@@ -69,7 +69,7 @@ function MainTable() {
 
 	useEffect(() => {
 		let tempData = sampledata.filter((item, index) => {
-			if (index >= (page*5) && index < (page*5) + 5) {
+			if (index >= page * 5 && index < page * 5 + 5) {
 				item.index = index;
 				return item;
 			}
@@ -79,14 +79,20 @@ function MainTable() {
 	}, [page]);
 
 	return (
-		<div className='h-full w-full bg-white rounded-md drop-shadow-md outline outline-2 outline-neutral-200 flex flex-col divide-y-2'>
-			<TableTopPane />
-			<div className=''>
-				{currentData.map((item) => {
-					return <SingleElement data={item} />;
-				})}
+		<div className='h-full w-full bg-white rounded-md drop-shadow-md outline outline-2 outline-neutral-200 flex flex-col divide-y-2 justify-between'>
+			<div>
+				<TableTopPane />
+				<div className=''>
+					{currentData.map((item) => {
+						return <SingleElement data={item} />;
+					})}
+				</div>
 			</div>
-			<TableBottomPane page={page} setPage={setPage} maxPage={Math.ceil(sampledata.length/5) -1 } />
+			<TableBottomPane
+				page={page}
+				setPage={setPage}
+				maxPage={Math.ceil(sampledata.length / 5) - 1}
+			/>
 		</div>
 	);
 }

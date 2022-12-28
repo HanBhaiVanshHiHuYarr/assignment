@@ -2,6 +2,11 @@ import React from "react";
 
 function TableBottomPane({ page, setPage, maxPage }) {
 	console.log(page, maxPage);
+	const pageNumbers = [];
+	for (let i = 0; i <= maxPage; i++) {
+		pageNumbers.push(i + 1);
+	}
+	console.log(pageNumbers);
 	const previousHandeler = () => {
 		if (page == 0) {
 			alert("This is the first page");
@@ -16,6 +21,9 @@ function TableBottomPane({ page, setPage, maxPage }) {
 			setPage(page + 1);
 		}
 	};
+	const handlePageClick = (pageNumber) => {
+		setPage(pageNumber - 1);
+	};
 	return (
 		<div className='flex items-center justify-between p-5'>
 			<button
@@ -23,7 +31,20 @@ function TableBottomPane({ page, setPage, maxPage }) {
 				className='outline outline-2 outline-neutral-300 hover:bg-neutral-50 shadow-md rounded-md px-4 py-2 text-neutral-600 font-bold'>
 				Previous
 			</button>
-			<div></div>
+
+			<div className='flex'>
+				{pageNumbers.map((pageNumber, i) => {
+					return (
+						<div
+							onClick={() => {
+								handlePageClick(pageNumber);
+							}}
+							className='outline mx-2 outline-2 outline-neutral-300 hover:bg-neutral-50 shadow-md rounded-md px-4 py-2 text-neutral-600 font-bold'>
+							{pageNumber}
+						</div>
+					);
+				})}
+			</div>
 			<button
 				onClick={nextHandler}
 				className='outline outline-2 outline-neutral-300 hover:bg-neutral-50 shadow-md rounded-md px-4 py-2 text-neutral-600 font-bold'>
