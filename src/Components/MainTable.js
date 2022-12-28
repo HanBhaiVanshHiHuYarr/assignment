@@ -70,6 +70,7 @@ function MainTable() {
 	useEffect(() => {
 		let tempData = sampledata.filter((item, index) => {
 			if (index >= page && index < page + 5) {
+				item.index = index;
 				return item;
 			}
 		});
@@ -81,8 +82,8 @@ function MainTable() {
 		<div className='h-full w-full bg-white rounded-md drop-shadow-md outline outline-2 outline-neutral-200 flex flex-col divide-y-2'>
 			<TableTopPane />
 			<div className='h-full'>
-				{currentData.map(item => {
-					return <SingleElement/>
+				{currentData.map((item) => {
+					return <SingleElement data={item} />;
 				})}
 			</div>
 			<TableBottomPane />
