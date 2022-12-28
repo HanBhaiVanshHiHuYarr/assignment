@@ -81,7 +81,7 @@ function MainTable() {
 	return (
 		<div className='h-full w-full bg-white rounded-md drop-shadow-md outline outline-2 outline-neutral-200 flex flex-col divide-y-2'>
 			<TableTopPane />
-			<div className='h-full'>
+			<div className=''>
 				{currentData.map((item) => {
 					return <SingleElement data={item} />;
 				})}
