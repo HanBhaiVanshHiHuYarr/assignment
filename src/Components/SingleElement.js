@@ -35,7 +35,7 @@ function SingleElement({ data }) {
 					</div>
 					<div className='w-1/4 flex items-center justify-center'>
 						<h1 className='text-sm text-neutral-500 font-medium'>
-							Jun 20, 2022
+							{data.lastLogin}
 						</h1>
 					</div>
 					<div className=' flex w-1/4 flex items-center justify-center'>
