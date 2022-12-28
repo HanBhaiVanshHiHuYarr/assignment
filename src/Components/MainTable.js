@@ -10,56 +10,56 @@ function MainTable() {
 	const [currentData, setCurrentData] = useState([]);
 	const sampledata = [
 		{
-			name: "Phoenix Baker",
+			name: "Phoenix Baker 1",
 			email: "phoenix@usetrinity.com",
 			status: "Active",
 			role: "Admin",
 			lastLogin: "Jun 20, 2022",
 		},
 		{
-			name: "Lana Baker",
+			name: "Lana Baker 2",
 			email: "Lana@usetrinity.com",
 			status: "Invited",
 			role: "Sales Leader",
 			lastLogin: "Jun 20, 2022",
 		},
 		{
-			name: "Phoenix Baker",
+			name: "Phoenix Baker 3",
 			email: "phoenix@usetrinity.com",
 			status: "Active",
 			role: "Admin",
 			lastLogin: "Jun 20, 2022",
 		},
 		{
-			name: "Lana Baker",
+			name: "Lana Baker 4",
 			email: "Lana@usetrinity.com",
 			status: "Invited",
 			role: "Sales Leader",
 			lastLogin: "Jun 20, 2022",
 		},
 		{
-			name: "Lana Baker",
+			name: "Lana Baker 5",
 			email: "Lana@usetrinity.com",
 			status: "Invited",
 			role: "Sales Leader",
 			lastLogin: "Jun 20, 2022",
 		},
 		{
-			name: "Phoenix Baker",
+			name: "Phoenix Baker 6",
 			email: "phoenix@usetrinity.com",
 			status: "Active",
 			role: "Admin",
 			lastLogin: "Jun 20, 2022",
 		},
 		{
-			name: "Lana Baker",
+			name: "Lana Baker 7",
 			email: "Lana@usetrinity.com",
 			status: "Invited",
 			role: "Sales Leader",
 			lastLogin: "Jun 20, 2022",
 		},
 		{
-			name: "Lana Baker",
+			name: "Lana Baker 8",
 			email: "Lana@usetrinity.com",
 			status: "Invited",
 			role: "Sales Leader",
@@ -69,7 +69,7 @@ function MainTable() {
 
 	useEffect(() => {
 		let tempData = sampledata.filter((item, index) => {
-			if (index >= page && index < page + 5) {
+			if (index >= (page*5) && index < (page*5) + 5) {
 				item.index = index;
 				return item;
 			}
@@ -86,7 +86,7 @@ function MainTable() {
 					return <SingleElement data={item} />;
 				})}
 			</div>
-			<TableBottomPane />
+			<TableBottomPane page={page} setPage={setPage} maxPage={Math.ceil(sampledata.length/5) -1 } />
 		</div>
 	);
 }
