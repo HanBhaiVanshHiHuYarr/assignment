@@ -34,15 +34,27 @@ function TableBottomPane({ page, setPage, maxPage }) {
 
 			<div className='flex'>
 				{pageNumbers.map((pageNumber, i) => {
-					return (
-						<div
-							onClick={() => {
-								handlePageClick(pageNumber);
-							}}
-							className='outline mx-2 outline-2 outline-neutral-300 hover:bg-neutral-50 shadow-md rounded-md px-4 py-2 text-neutral-600 font-bold'>
-							{pageNumber}
-						</div>
-					);
+					if (pageNumber - 1 == page) {
+						return (
+							<button
+								onClick={() => {
+									handlePageClick(pageNumber);
+								}}
+								className='outline mx-2 outline-2 outline-neutral-300 bg-neutral-200 hover:bg-neutral-100 shadow-md rounded-md px-4 py-2 text-neutral-600 font-bold'>
+								{pageNumber}
+							</button>
+						);
+					} else {
+						return (
+							<button
+								onClick={() => {
+									handlePageClick(pageNumber);
+								}}
+								className='outline mx-2 outline-2 outline-neutral-300 hover:bg-neutral-100 shadow-md rounded-md px-4 py-2 text-neutral-600 font-bold'>
+								{pageNumber}
+							</button>
+						);
+					}
 				})}
 			</div>
 			<button
