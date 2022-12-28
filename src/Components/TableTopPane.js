@@ -53,7 +53,7 @@ function TableTopPane({ setSampleData, lastIndex , sampledata}) {
 				<button
 					onClick={exportData}
 					className='outline outline-2 outline-neutral-300 hover:bg-neutral-50 shadow-md rounded-md px-4 py-2 text-neutral-600 font-bold'>
-					Download CSV
+					Download Data
 				</button>
 				<button
 					onClick={handleAdd}
