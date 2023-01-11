@@ -13,7 +13,7 @@ interface DisplayData {
   status: string;
 }
 
-const MainTable:FC<any> = ({data}) => {
+const MainTable: FC<any> = ({data}) => {
   const [sampledata, setSampleData] = useState<DisplayData[]>(data);
   const [page, setPage] = useState<number>(0);
   const [currentData, setCurrentData] = useState<DisplayData[]>([]);
