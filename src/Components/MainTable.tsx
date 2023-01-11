@@ -1,14 +1,22 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, FC } from "react";
 import TableBottomPane from "./TableBottomPane";
 import TableTopPane from "./TableTopPane";
-
 import SingleElement from "./SingleElement";
-import ProfilePic from "../Assets/profile.svg";
 
-function MainTable() {
-	const [page, setPage] = useState(0);
-	const [currentData, setCurrentData] = useState([]);
-	const [sampledata, setSampleData] = useState([
+interface DisplayData{
+	color?: number;
+	email: string;
+	index: number;
+	lastLogin: string;
+	name: string;
+	role: string;
+	status: string;
+}
+
+const MainTable:FC = ()=> {
+	const [page, setPage] = useState<number>(0);
+	const [currentData, setCurrentData] = useState<DisplayData[]>([]);
+	const [sampledata, setSampleData] = useState<DisplayData[]>([
 		{
 			name: "Phoenix Baker 1",
 			email: "phoenix@usetrinity.com",
@@ -82,7 +90,7 @@ function MainTable() {
 				return item;
 			}
 		});
-		console.log(tempData);
+		console.log(tempData)
 		setCurrentData(tempData);
 	}, [page, sampledata]);
 

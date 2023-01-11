@@ -12,43 +12,38 @@ function TableBottomPane({ page, setPage, maxPage }) {
 			progress: undefined,
 			theme: "light",
 		});
-
-	const pageNumbers = [];
+	const pageNumbers:number[] = [];
 	for (let i = 0; i <= maxPage; i++) {
 		pageNumbers.push(i + 1);
 	}
-	console.log(pageNumbers);
-	const previousHandeler = () => {
-		if (page == 0) {
+	const previousHandler = () => {
+		if (page === 0) {
 			errorToast("This is the first page")
-			// alert("This is the first page");
 		} else {
 			setPage(page - 1);
 		}
 	};
 	const nextHandler = () => {
-		if (page == maxPage) {
-			// alert("This is the last page");
+		if (page === maxPage) {
 			errorToast("This is the last page");
 		} else {
 			setPage(page + 1);
 		}
 	};
-	const handlePageClick = (pageNumber) => {
+	const handlePageClick = (pageNumber:number) => {
 		setPage(pageNumber - 1);
 	};
 	return (
 		<div className='flex items-center justify-between p-5'>
-			
 			<button
-				onClick={previousHandeler}
+				onClick={previousHandler}
 				className='outline outline-2 outline-neutral-300 hover:bg-neutral-50 shadow-md rounded-md px-4 py-2 text-neutral-600 font-bold'>
 				Previous
 			</button>
 
 			<div className='flex'>
 				{pageNumbers.map((pageNumber, i) => {
-					if (pageNumber - 1 == page) {
+					if (pageNumber - 1 === page) {
 						return (
 							<button
 								onClick={() => {

@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { FC }  from 'react'
 
-function TopPane() {
+const TopPane:FC =()=> {
   return (
 		<div className='p-4 py-2 flex'>
 			<div className='bg-white flex drop-shadow-sm rounded-md outline outline-2 outline-neutral-300 divide-x-2 divide-neutral-300'>

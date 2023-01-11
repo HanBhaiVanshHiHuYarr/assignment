@@ -1,12 +1,13 @@
 import React, { useState } from "react";
-import ProfilePic from "../Assets/profile.svg";
 import Modal from "./Modal";
-import YesNo from "./YesNo";
+
+const ProfilePic: string = require("../Assets/profile.svg").default;
 
 function SingleElement({ data, setSampleData, sampledata }) {
-	const handleDelete = (index) => {
+
+	const handleDelete = () => {
 		let final = [];
-		final = sampledata.filter((item) => item.index != data.index);
+		final = sampledata.filter((item) => item.index !== data.index);
 		console.log(final);
 		setSampleData(final);
 	};
@@ -17,13 +18,13 @@ function SingleElement({ data, setSampleData, sampledata }) {
 
 	const [visible, setVisible] = useState(false);
 
-	if (data.color % 2 == 0) {
+	if (data.color % 2 === 0) {
 		return (
 			<div className=' h-20 flex bg-slate-100 p-3 items-center'>
 				<img
 					src={ProfilePic}
 					className='h-4/5 w-auto rounded-full'
-					alt='sdfs'
+					alt='profilePic'
 				/>
 				<div className='flex flex-col grow pl-3 justify-center'>
 					<h1 className='text-lg font-semibold'>{data.name}</h1>
@@ -31,7 +32,7 @@ function SingleElement({ data, setSampleData, sampledata }) {
 				</div>
 				<div className='w-1/2 flex'>
 					<div className=' w-1/4 flex items-center justify-center'>
-						{data.status == "Active" ? (
+						{data.status === "Active" ? (
 							<h1 className='text-green-700 h-fit p-1 bg-green-100 font-bold text-sm px-2 rounded-xl'>
 								● {data.status}
 							</h1>
@@ -54,10 +55,10 @@ function SingleElement({ data, setSampleData, sampledata }) {
 					</div>
 					<div className=' flex w-1/4 flex items-center justify-center'>
 						<button
-							class='fa-solid text-neutral-500 fa-trash-can m-3'
+							className='fa-solid text-neutral-500 fa-trash-can m-3'
 							onClick={handleDelete}></button>
 						<button
-							class='fa-solid text-neutral-500 fa-pencil m-3'
+							className='fa-solid text-neutral-500 fa-pencil m-3'
 							onClick={handleEdit}></button>
 						{visible && (
 							<Modal
@@ -78,7 +79,7 @@ function SingleElement({ data, setSampleData, sampledata }) {
 				<img
 					src={ProfilePic}
 					className='h-4/5 w-auto rounded-full'
-					alt='sdfs'
+					alt='ProfilePic'
 				/>
 				<div className='flex flex-col grow pl-3 justify-center'>
 					<h1 className='text-lg font-semibold'>{data.name}</h1>
@@ -86,7 +87,7 @@ function SingleElement({ data, setSampleData, sampledata }) {
 				</div>
 				<div className='w-1/2 flex'>
 					<div className=' w-1/4 flex items-center justify-center'>
-						{data.status == "Active" ? (
+						{data.status === "Active" ? (
 							<h1 className='text-green-700 h-fit p-1 bg-green-100 font-bold text-sm px-2 rounded-xl'>
 								● {data.status}
 							</h1>
@@ -109,12 +110,12 @@ function SingleElement({ data, setSampleData, sampledata }) {
 					</div>
 					<div className=' flex w-1/4 flex items-center justify-center'>
 						<button
-							class='fa-solid text-neutral-500 fa-trash-can m-3'
+							className='fa-solid text-neutral-500 fa-trash-can m-3'
 							onClick={handleDelete}>
-							{/* <YesNo /> */}
+							
 						</button>
 						<button
-							class='fa-solid text-neutral-500 fa-pencil m-3'
+							className='fa-solid text-neutral-500 fa-pencil m-3'
 							onClick={handleEdit}></button>
 						{visible && (
 							<Modal

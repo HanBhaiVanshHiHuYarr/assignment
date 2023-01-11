@@ -1,15 +1,34 @@
-import { data } from "autoprefixer";
-import React, { useState } from "react";
+import React, { useState, FC } from "react";
 import { toast, ToastContainer } from "react-toastify";
 
-function Modal({
+interface DisplayData {
+	color?: number;
+	email: string;
+	index?: number;
+	lastLogin: string;
+	name: string;
+	role: string;
+	status: string;
+}
+
+
+interface Props {
+	setSampleData: React.Dispatch<React.SetStateAction<DisplayData[]>>;
+	setVisible: React.Dispatch<React.SetStateAction<boolean>>;
+	lastIndex?:number;
+	prevData :DisplayData;
+	modify?:boolean;
+	sampledata?:DisplayData[];
+}
+
+const Modal:FC<Props> = ({
 	setSampleData,
 	setVisible,
 	lastIndex,
 	prevData,
 	modify,
 	sampledata,
-}) {
+})=> {
 	const [name, setName] = useState(prevData.name);
 	const [email, setEmail] = useState(prevData.email);
 	const [status, setStatus] = useState(prevData.status);
@@ -28,7 +47,8 @@ function Modal({
 
 	const handleClick = (e) => {
 		e.preventDefault();
-		let tempData = {};
+		let tempData: DisplayData;
+		
 		tempData.name = name;
 		tempData.email = email;
 		tempData.status = status;
@@ -50,7 +70,7 @@ function Modal({
 		console.log(prevData);
 
 		tempArr = sampledata.map((item) => {
-			if (prevData.index == item.index) {
+			if (prevData.index === item.index) {
 				item.name = name;
 				item.email = email;
 				item.status = status;

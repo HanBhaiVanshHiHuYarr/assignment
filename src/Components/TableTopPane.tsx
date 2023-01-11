@@ -1,7 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, FC } from "react";
 import Modal from "./Modal";
 
-function TableTopPane({ setSampleData, lastIndex , sampledata}) {
+interface DisplayData{
+	color?: number;
+	email: string;
+	index?: number;
+	lastLogin: string;
+	name: string;
+	role: string;
+	status: string;
+}
+
+interface Props{
+	setSampleData:React.Dispatch<React.SetStateAction<DisplayData[]>>;
+	lastIndex: number;
+	sampledata:DisplayData[];
+}
+
+const TableTopPane:FC<Props> = ({ setSampleData, lastIndex, sampledata }) =>{
+
 	const [visible, setVisible] = useState(false);
 	const handleAdd = () => {
 		setVisible(true);
@@ -11,7 +28,6 @@ function TableTopPane({ setSampleData, lastIndex , sampledata}) {
 		name: "",
 		email: "",
 		lastLogin: "",
-		name: "",
 		role: "",
 		status:""
 	}
@@ -23,7 +39,6 @@ function TableTopPane({ setSampleData, lastIndex , sampledata}) {
 		const link = document.createElement("a");
 		link.href = jsonString;
 		link.download = "data.json";
-
 		link.click();
 	};
 
@@ -42,7 +57,7 @@ function TableTopPane({ setSampleData, lastIndex , sampledata}) {
 					<h1 className='text-neutral-700 font-bold pr-4 text-xl'>Users</h1>
 					<h1 className='text-green-700 bg-green-100 font-bold text-sm px-2 rounded-xl'>
 						{" "}
-						48 Users
+						{sampledata.length} Users
 					</h1>
 				</div>
 				<h1 className='text-neutral-400 font-regular'>
