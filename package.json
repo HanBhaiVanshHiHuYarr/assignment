@@ -15,13 +15,21 @@
     "react-scripts": "5.0.1",
     "react-toastify": "^9.1.1",
     "typescript": "^4.9.4",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "yarn": "^1.22.19"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "gts lint",
+    "clean": "gts clean",
+    "compile": "tsc",
+    "fix": "gts fix",
+    "prepare": "npm.cmd run compile",
+    "pretest": "npm.cmd run compile",
+    "posttest": "npm.cmd run lint"
   },
   "eslintConfig": {
     "extends": [
@@ -42,8 +50,11 @@
     ]
   },
   "devDependencies": {
+    "@types/node": "^14.11.2",
     "autoprefixer": "^10.4.13",
+    "gts": "^3.1.1",
     "postcss": "^8.4.20",
-    "tailwindcss": "^3.2.4"
+    "tailwindcss": "^3.2.4",
+    "typescript": "~4.7.0"
   }
 }
