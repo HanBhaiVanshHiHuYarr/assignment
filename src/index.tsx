@@ -5,7 +5,7 @@ import App from './App';
 import 'react-toastify/dist/ReactToastify.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root')!);
-//some random comment to check webhooks git
+//some random comment to check webhooks github
 root.render(
   <React.StrictMode>
     <App />
